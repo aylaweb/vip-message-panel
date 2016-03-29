@@ -1,0 +1,69 @@
+<!--
+Copyright (c) 2016 The Ayla Project Authors.
+This code may only be used under the MIT style license found at http://aylaweb.github.io/LICENSE.txt
+The complete set of authors may be found at http://aylaweb.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://aylaweb.github.io/CONTRIBUTORS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link href="../font-roboto/roboto.html" rel="import">
+<link href="../libs-html/lodash.html" rel="import">
+
+
+
+<dom-module id="vip-message-panel">                 
+    <style>
+        :host {
+            flex: 1 1 0px;
+        }
+    </style>
+    <template id="template_message_panel">
+        <div id="container_message_panel" vertical layout flex>
+            <template is="dom-repeat" items="{{messages}}">
+                <p>{{item.message}}</p>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: "vip-message-panel",
+            properties: {
+                messages: {
+                    type: Array
+                  /*  value: function () {
+                        return [];
+                    } */
+                },
+                synchedMessages: {
+                    type: Array,
+                    value: function () {
+                        return [];
+                    }
+                }
+            },
+            observers: ['_messagesChanged(messages.splices)', '_synchedMessagesChanged(synchedMessages.splices)'],
+            created: function () {
+                console.log(this.id + " -> vip-message-panel -> Event created");
+            },
+            attached: function () {
+                console.log(this.id + " -> vip-message-panel -> Event attached");
+            },
+            ready: function () {
+                console.log(this.id + " -> vip-message-panel -> Event ready");
+                this.messages = [];
+                //  this.dataSourcesJSON[0].dataSource.getData();
+            },
+            detached: function () {
+                console.log(this.id + " -> vip-message-panel -> Event detached");
+            },
+            _messagesChanged: function (changeRecord) {
+
+            },
+            _synchedMessagesChanged: function (changeRecord) {
+
+
+            }
+
+        });
+    </script>
+</dom-module>
